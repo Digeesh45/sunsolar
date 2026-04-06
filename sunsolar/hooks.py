@@ -140,6 +140,19 @@ app_license = "mit"
 # 	}
 # }
 
+
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [["module", "=", "Sun Best Solar"]],
+    },
+    {
+        "dt": "Property Setter",
+        "filters": [["module", "=", "Sun Best Solar"]],
+    }
+
+]
+
 # Scheduled Tasks
 # ---------------
 
