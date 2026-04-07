@@ -24,7 +24,6 @@ frappe.ui.form.on('BOM', {
                     });
                 });
 
-                // ✅ Use frappe.call to create the doc server-side, then redirect
                 frappe.call({
                     method: 'frappe.client.insert',
                     args: {
@@ -51,23 +50,5 @@ frappe.ui.form.on('BOM', {
 
             }, __('Create'));
         }
-
-        if (frm.doc.docstatus === 0) {
-            frm.trigger('set_customer_from_project');
-        }
-    },
-
-    project: function (frm) {
-        frm.trigger('set_customer_from_project');
-    },
-
-    set_customer_from_project: function (frm) {
-        if (!frm.doc.project) return;
-        frappe.db.get_value('Project', frm.doc.project, 'custom_customer')
-            .then(r => {
-                if (r && r.message && r.message.custom_customer) {
-                    frm.set_value('custom_customer', r.message.custom_customer);
-                }
-            });
     }
 });
